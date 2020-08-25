@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        img {
+            background-color: black;
+            outline: black 2px solid;
+            height: auto;
+            width: 100%;
+        }
+
+        header,
+        footer {
+            outline: black 1px solid;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        div,
+        h1,
+        h2,
+        footer p {
+            padding: 15px;
+        }
+
+        @media (min-width: 500px) {
+            section {
+                display: flex;
+                flex-direction: row;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <H1>TITEL</H1>
+    </header>
+    <main>
+        <h2>Undertitel</h2>
+        <section>
+            <div id="artikel1">
+                <img src="https://placeimg.com/400/300/any">
+                <article>
+                    <h3>Artikel 1</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis consequuntur soluta explicabo cupiditate cum obcaecati sit, magni molestiae delectus minima, culpa in modi temporibus a aspernatur officia distinctio quibusdam, perspiciatis repellendus, pariatur aliquam. Iure odit, excepturi perferendis, reprehenderit minima culpa incidunt quia eos modi eligendi sint atque nemo, commodi nihil a nostrum non ipsam! Neque fuga eaque corporis impedit aperiam, error quo, recusandae cum similique nihil libero alias deserunt dolores, nam commodi suscipit! Mollitia aliquid veniam, laudantium autem ut quas quos iure unde facere ex hic maiores officiis doloremque soluta, delectus, labore repellendus nostrum aperiam excepturi, officia enim! Delectus, unde.</p>
+                </article>
+            </div>
+            <div id="artikel2">
+                <img src="https://placeimg.com/400/300/any">
+                <article>
+                    <h3>Artikel 2</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis consequuntur soluta explicabo cupiditate cum obcaecati sit, magni molestiae delectus minima, culpa in modi temporibus a aspernatur officia distinctio quibusdam, perspiciatis repellendus, pariatur aliquam. Iure odit, excepturi perferendis, reprehenderit minima culpa incidunt quia eos modi eligendi sint atque nemo, commodi nihil a nostrum non ipsam! Neque fuga eaque corporis impedit aperiam, error quo, recusandae cum similique nihil libero alias deserunt dolores, nam commodi suscipit! Mollitia aliquid veniam, laudantium autem ut quas quos iure unde facere ex hic maiores officiis doloremque soluta, delectus, labore repellendus nostrum aperiam excepturi, officia enim! Delectus, unde.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Tak for dit besøg!</p>
+    </footer>
+    <script>
+        const overskrift = document.querySelector("h1");
+        const underoverskrift = document.querySelector("h2");
+        const artikelTitel1 = document.querySelector("#artikel1 h3");
+        const artikelText1 = document.querySelector("#artikel1 p");
+        const artikelTitel2 = document.querySelector("#artikel2 h3");
+        const artikelText2 = document.querySelector("#artikel2 p");
+        const footer = document.querySelector("footer");
+
+
+
+        console.log(overskrift.textContent);
+        console.log(underoverskrift.textContent);
+
+        console.log(artikelTitel1.textContent);
+        console.log(artikelText1.textContent);
+        console.log(artikelTitel2.textContent);
+        console.log(artikelText2.textContent);
+
+        console.log(footer.textContent);
+
+    </script>
+</body>
+
+</html>
