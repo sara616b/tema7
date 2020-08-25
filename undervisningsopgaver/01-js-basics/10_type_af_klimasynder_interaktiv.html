@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CO2</title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <p>Indtast længden på din flyrejse i timer:</p>
+    <input type="text" id="timer">
+    <button>Udregn CO2 i konsollen.</button>
+
+    <script>
+        let timer;
+        let co2UdledtVedFlyrejse;
+
+        document.querySelector("button").addEventListener("click", udregnCO2);
+
+        function udregnCO2() {
+            timer = document.querySelector("#timer").value;
+            if ((isNaN(timer)) == true) {
+                console.log("Not a number");
+            } else if (isNaN(timer) == false) {
+
+
+                co2UdledtVedFlyrejse = timer * 109;
+                console.log(timer);
+                console.log(co2UdledtVedFlyrejse);
+
+                let resultat = `Ved ${timer} timers flyrejse har du udledt ${co2UdledtVedFlyrejse} kg CO2.`;
+
+                if (co2UdledtVedFlyrejse < 100) {
+                    resultat += "Tæt på Thunberg.";
+                } else if (co2UdledtVedFlyrejse > 100 && co2UdledtVedFlyrejse < 200) {
+                    resultat += "Ja ja, du behøver ikke melde dig ud a Å!";
+                } else if (co2UdledtVedFlyrejse > 200 && co2UdledtVedFlyrejse < 600) {
+                    resultat += "Det er godt for turismen i nordeuropa.";
+                } else if (co2UdledtVedFlyrejse > 600) {
+                    resultat += "Nå ja vi kan jo altid kolonisere en anden planet...";
+                }
+
+                console.log(resultat);
+            }
+        }
+
+    </script>
+</body>
+
+</html>
