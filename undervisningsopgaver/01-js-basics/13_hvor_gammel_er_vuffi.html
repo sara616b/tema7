@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <p>Indtast din hunds alder:</p>
+    <input type="number">
+    <button>Hvor gammel er vuffi?</button>
+
+
+    <script>
+        let hundalder;
+        const knap = document.querySelector("button");
+        knap.addEventListener("click", klikKnap);
+
+        function klikKnap() {
+            hundalder = document.querySelector("input").value;
+            console.log(`Alderen på din hund er: ${hundalder}.`);
+
+            console.log(`Din hunds menneskealder beregnet ud fra den gamle regl er ${hundalder * 7}.`);
+
+            console.log(`Din hunds menneskealder beregnet ud fra den nye fantastisk smarte metode er ${Math.round(16 * Math.log(hundalder) + 31)}.`)
+        }
+
+    </script>
+
+</body>
+
+</html>
