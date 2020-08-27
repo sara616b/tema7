@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <h3>Verdens bedste dyr...</h3>
+    <img src="http://mabe-kea.dk/E19/pics/frog.png" alt="billede">
+    <p>Billeder fra underviser!</p>
+    <button></button>
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+        let billeder = [
+            "http://mabe-kea.dk/E19/pics/frog.png",
+            "http://mabe-kea.dk/E19/pics/pig.png", "http://mabe-kea.dk/E19/pics/fox.png", "http://mabe-kea.dk/E19/pics/sild.jpg", "http://mabe-kea.dk/E19/pics/kroko.jpg"
+        ];
+
+        function start() {
+            console.log("DOM loaded");
+
+            let tal = 1;
+
+            let bill = document.querySelector("img");
+            let knap = document.querySelector("button");
+            knap.textContent = "videre";
+
+            knap.addEventListener("click", () => {
+                bill.src = billeder[tal];
+                knap.textContent = "videre";
+                if (tal < 4) {
+                    tal++;
+                } else {
+                    knap.textContent = "forfra";
+                    tal = 0;
+                }
+            });
+
+        }
+
+    </script>
+</body>
+
+</html>
