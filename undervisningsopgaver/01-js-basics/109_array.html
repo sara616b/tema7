@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array - opgave 9</title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+
+    <ul id="display"></ul>
+
+    <script>
+        const playliste = ["New Romantics", "Never Been In Love", "My Shot", "Holy Ground", "Wilson (Expensive Mistakes)", "Guns and Ships", "High Hopes", "Bohemian Rhapsody", "Sorry Not Sorry", "Only The Young"];
+
+        playliste.forEach(sang => {
+            document.querySelector("#display").innerHTML += `${sang} <br>`;
+        });
+
+    </script>
+</body>
+
+</html>
