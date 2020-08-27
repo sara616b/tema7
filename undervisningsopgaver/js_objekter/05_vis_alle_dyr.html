@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DyreObjekt</title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+
+    <article></article>
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+
+            let dyr = [{
+                "dyr": "gris",
+                "type": "pattedyr",
+                "billede": "http://mabe-kea.dk/E19/pics/pig.png",
+                "levested": "svinefarm"
+            }, {
+                "dyr": "frø",
+                "type": "frø",
+                "billede": "http://mabe-kea.dk/E19/pics/frog.png",
+                "levested": "mose"
+            }, {
+                "dyr": "ræv",
+                "type": "pattedyr",
+                "billede": "http://mabe-kea.dk/E19/pics/fox.png",
+                "levested": "skov"
+            }, {
+                "dyr": "sild",
+                "type": "fisk",
+                "billede": "http://mabe-kea.dk/E19/pics/sild.png",
+                "levested": "vand"
+            }, {
+                "dyr": "krokodille",
+                "type": "krybdyr",
+                "billede": "http://mabe-kea.dk/E19/pics/kroko.png",
+                "levested": "vand"
+            }];
+
+            console.log(dyr);
+
+
+            let article = document.querySelector("article");
+            dyr.forEach(dyr => {
+                article.innerHTML += `<p>
+                Dyr: ${
+                    dyr.dyr
+                }, type: ${
+                    dyr.type
+                }, levested: ${
+                    dyr.levested
+                }
+                </p>`;
+            });
+
+
+
+        }
+
+    </script>
+</body>
+
+</html>
