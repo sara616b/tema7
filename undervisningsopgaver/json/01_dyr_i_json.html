@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JS Objekter</title>
+    <style>
+        article {
+            border: 1px solid #333;
+            padding: 10px;
+        }
+
+        img {
+            max-width: 30%;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+
+    </section>
+
+    <template>
+        <article>
+            <h2></h2>
+            <img src="" alt="">
+            <p class="art"></p>
+            <p class="sted"></p>
+        </article>
+    </template>
+    <script>
+        document.addEventListener("DOMContentLoaded", hentdata());
+        let container = document.querySelector("section");
+        let temp = document.querySelector("template");
+
+
+        async function hentdata() {
+            const respons = await fetch("dyr.json");
+            const json = await respons.json();
+            vis(json);
+        };
+
+        function vis(dyr) {
+
+            //løb igennem array "dyr"
+            dyr.forEach(etDyr => {
+
+                let klon = temp.cloneNode(true).content;
+                klon.querySelector("h2").textContent = etDyr.navn;
+                klon.querySelector(".art").textContent = etDyr.type;
+                klon.querySelector(".sted").textContent = etDyr.levested;
+                klon.querySelector("img").src = etDyr.billede;
+                container.appendChild(klon);
+
+            });
+        }
+    </script>
+</body></html>
