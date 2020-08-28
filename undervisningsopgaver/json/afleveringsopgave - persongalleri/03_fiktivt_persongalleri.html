@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JS Objekter</title>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            margin: 10px auto;
+            padding: 10px;
+            max-width: 1000px;
+            font-family: sans-serif;
+            letter-spacing: 5px;
+        }
+
+        section {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-gap: 10px;
+            max-width: 1000px;
+            margin: 10px auto;
+            padding: 10px;
+        }
+
+        article {
+            padding: 10px;
+            box-shadow: 3px 2px 8px -1px gray;
+        }
+
+        img {
+            max-width: 200px;
+        }
+
+        p {
+            font-family: sans-serif;
+            line-height: 150%;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>Persongalleri</h1>
+    <section>
+
+    </section>
+
+    <template>
+        <article>
+            <h2></h2>
+            <img src="" alt="">
+            <p class="job">Job: </p>
+            <p class="religion">Religion: </p>
+            <p class="hobby">Hobby: </p>
+        </article>
+    </template>
+    <script>
+        document.addEventListener("DOMContentLoaded", hentdata());
+        let container = document.querySelector("section");
+        let temp = document.querySelector("template");
+
+
+
+        async function hentdata() {
+            const link = "https://spreadsheets.google.com/feeds/list/1mtHhpoEkYqVqr1TSnKQ1_sQZWI7FRVjcw3H1oatDOVQ/od6/public/values?alt=json";
+            const respons = await fetch(link);
+            const json = await respons.json();
+            vis(json);
+        };
+
+        function vis(person) {
+            console.log(person);
+            person.feed.entry.forEach(person => {
+                const klon = temp.cloneNode(true).content;
+                klon.querySelector("h2").textContent = person.gsx$navn.$t + " " + person.gsx$efternavn.$t + " (" + person.gsx$køn.$t + ", " + person.gsx$alder.$t + ")";
+                klon.querySelector("img").src = person.gsx$billede.$t;
+                klon.querySelector(".job").textContent += person.gsx$job.$t;
+                klon.querySelector(".religion").textContent += person.gsx$religion.$t;
+                klon.querySelector(".hobby").textContent += person.gsx$hobby.$t;
+                container.appendChild(klon);
+            });
+        };
+
+    </script>
+</body>
+
+</html>
