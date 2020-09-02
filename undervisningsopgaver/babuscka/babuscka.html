@@ -10,6 +10,21 @@
             box-sizing: border-box;
         }
 
+        .splash {
+            display: flex;
+            width: 100vw;
+            height: 200px;
+            background-image: url(imgs/large/roedvin.jpg);
+            background-size: cover;
+        }
+
+        .splash h1 {
+            color: white;
+            margin: 0 auto;
+            align-self: center;
+            font-variant-caps: small-caps;
+        }
+
         .top {
             display: flex;
             flex-wrap: wrap;
@@ -20,7 +35,7 @@
             padding: 15px;
             max-width: 1000px;
             margin: auto;
-            background-color: antiquewhite;
+            background-color: #edc9a2;
         }
 
         h1 {
@@ -68,12 +83,14 @@
             margin: 5px 10px;
         }
 
-        .pris {
+        .pris,
+        #pris {
             font-weight: bold;
         }
 
-        .kategori {
-            font-weight: lighter;
+        .kategori,
+        #detaljer {
+            color: gray;
             line-height: 100%;
         }
 
@@ -109,14 +126,16 @@
             left: 0;
             top: 0;
             width: 100vw;
-            height: 100vw;
+            height: 100vh;
             background-color: rgba(135, 98, 89, 0.8);
             display: none;
         }
 
         #popup article {
             width: 80vw;
-            margin: 4rem auto;
+            height: 80vh;
+            overflow-y: scroll;
+            margin: 3rem auto;
             background-color: white;
             box-shadow: none;
         }
@@ -140,19 +159,36 @@
 
         #indhold img,
         #indhold section {
-            flex-basis: 400px;
+            flex-basis: 200px;
             flex-grow: 1;
             padding: 10px;
         }
 
         #popup p {
             margin: 0;
+            padding: 5px 0;
+        }
+
+        footer {
+            background-color: #3c2414;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        footer p {
+            color: white;
         }
 
     </style>
 </head>
 
 <body>
+    <div class="splash">
+        <h1>Bistro Babu<wbr>scka</h1>
+    </div>
     <div class="content">
         <div class="top">
             <h1>RETTER</h1>
@@ -188,6 +224,10 @@
 
 
     </div>
+    <footer>
+        <p><b>Bistro Babuscka</b><br>BY 0000<br>Adresse 00<br>+45 tele fon</p>
+        <p><b>Vi har altid åbent.</b><br>Man-Fre: Altid åbent<br>Lør-Søn: Altid åbent</p>
+    </footer>
     <template>
         <article>
             <h3></h3>
@@ -245,6 +285,7 @@
             popup.style.display = "block";
             popup.querySelector("#navn").textContent = ret.gsx$navn.$t;
             popup.querySelector("img").src = "imgs/small/" + ret.gsx$billede.$t + "-sm.jpg";
+            popup.querySelector("#pris").textContent = ret.gsx$pris.$t + " kr.";
             popup.querySelector("#lang").textContent = ret.gsx$lang.$t;
             popup.querySelector("#detaljer").textContent = ret.gsx$kategori.$t + ", " + ret.gsx$oprindelse.$t;
         }
