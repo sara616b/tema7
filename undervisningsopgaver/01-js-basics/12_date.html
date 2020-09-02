@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+
+
+<body>
+    <!--NOPE TIL DEN HER OPGAVE-->
+
+
+    <p>Intast din alder:</p>
+    <input type="text" id="dinalder">
+    <p>Intast din date's alder:</p>
+    <input type="text" id="datesalder">
+    <button>Er aldersgabet for stort?</button>
+
+    <script>
+        let dinAlder = document.querySelector("#dinalder");
+        let datesAlder = document.querySelector("#datesalder");
+        const knap = document.querySelector("button");
+        knap.addEventListener("click", klikKnap);
+
+        function klikKnap() {
+
+            if (dinAlder.value / 2 + 7 < datesAlder.value) {
+
+
+
+                console.log("A-OK");
+
+
+            }
+            //dinAlder.value
+            //datesAlder.value  && datesAlder.value / 2 + 7 < dinAlder
+        }
+
+    </script>
+</body>
+
+</html>

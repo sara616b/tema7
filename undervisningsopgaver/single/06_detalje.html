@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JS Objekter</title>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+
+        }
+
+        #list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-gap: 10px;
+            max-width: 1000px;
+            margin: 10px auto;
+            padding: 10px;
+        }
+
+        article {
+            padding: 10px;
+            box-shadow: 3px 2px 8px -1px gray;
+        }
+
+        p {
+            font-family: sans-serif;
+            line-height: 150%;
+        }
+
+        #popup {
+            width: 100vw;
+            background-color: white;
+        }
+
+        #popup article {
+            width: 80vw;
+            margin: 4rem auto;
+            background-color: white;
+        }
+
+        #luk {
+            position: absolute;
+            top: 5rem;
+            right: 12vw;
+            background-color: white;
+            color: black;
+            border-radius: 50%;
+            padding: 0.5em;
+        }
+
+        #indhold {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        #indhold img,
+        #indhold section {
+            flex-basis: 400px;
+            flex-grow: 1;
+            padding: 10px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <section id="popup">
+        <article>
+            <button id="luk">TILBAGE</button>
+            <section id="indhold">
+                <img src="" alt="">
+                <section>
+                    <h2 id="navn"></h2>
+                    <p id="alder"></p>
+                    <p id="religion"></p>
+                    <p id="hobby"></p>
+                    <p id="job"></p>
+                    <p id="bosted"></p>
+                </section>
+            </section>
+        </article>
+
+    </section>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", hentdata);
+        let container = document.querySelector("#list");
+        let temp = document.querySelector("template");
+        let filter = "alle";
+        let person;
+        let popup = document.querySelector("#popup");
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get("id");
+
+        async function hentdata() {
+            console.log("hentData");
+            //https://docs.google.com/spreadsheets/d/1mtHhpoEkYqVqr1TSnKQ1_sQZWI7FRVjcw3H1oatDOVQ/edit#gid=0
+            const link = "https://spreadsheets.google.com/feeds/list/1mtHhpoEkYqVqr1TSnKQ1_sQZWI7FRVjcw3H1oatDOVQ/od6/public/values?alt=json";
+            const respons = await fetch(link);
+            person = await respons.json();
+            addEventListenersToButtons();
+            visPersoner();
+        };
+
+        function visPersoner() {
+            console.log(person);
+            person.feed.entry.forEach(person => {
+                if (id == person.gsx$id.$t) {
+                    visDetaljer(person);
+                }
+            });
+
+
+        };
+
+        document.querySelector("#luk").addEventListener("click", () => history.back());
+
+
+        function visDetaljer(person) {
+            console.log(person);
+            popup.querySelector("#navn").textContent = person.gsx$navn.$t + " " + person.gsx$efternavn.$t;
+            popup.querySelector("img").src = person.gsx$billede.$t;
+            popup.querySelector("#alder").textContent = "Alder: " + person.gsx$alder.$t;
+            popup.querySelector("#religion").textContent = "Religion: " + person.gsx$religion.$t;
+            popup.querySelector("#hobby").textContent = "Hobby: " +
+                person.gsx$hobby.$t;
+            popup.querySelector("#job").textContent = "Job: " +
+                person.gsx$job.$t;
+            popup.querySelector("#bosted").textContent = "Bosted: " +
+                person.gsx$by.$t + ", " +
+                person.gsx$land.$t;
+        }
+
+        function addEventListenersToButtons() {
+            console.log("addEventListenersToButtons");
+            document.querySelectorAll(".filter").forEach((btn) => {
+                btn.addEventListener("click", filterBTNs);
+            });
+        };
+
+        function filterBTNs() {
+            console.log("filterBTNs")
+            filter = this.dataset.køn;
+            document.querySelectorAll(".filter").forEach((btn) => {
+                btn.classList.remove("valgt");
+            });
+            this.classList.add("valgt");
+            document.querySelector("h1").textContent = this.textContent;
+            visPersoner();
+        }
+
+    </script>
+</body>
+
+</html>
